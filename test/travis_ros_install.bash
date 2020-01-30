@@ -4,7 +4,7 @@
 sudo pip install catkin_pkg
 sudo pip install empy
 sudo pip install pyyaml
-sudo pip install respkg
+sudo pip install rospkg
 
 #ros install
 cd ..
