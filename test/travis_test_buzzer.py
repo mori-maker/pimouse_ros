@@ -10,7 +10,7 @@ class BuzzerTest(unittest.TestCase):
         self.assertIn('/buzzer',nodes, "node does not exit")
 
     def test_put_value(self):
-        pub = rospy.Publiser('/buzzer',UInt16)
+        pub = rospy.Publisher('/buzzer',UInt16)
         for i in range(10):
             pub.publish(1234)
             time.sleep(0.1)
