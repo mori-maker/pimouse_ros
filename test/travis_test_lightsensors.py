@@ -8,7 +8,7 @@ from pimouse_ros.msg import LightSensorValues
 class LightsensorTest(unittest.TestCase):
     def setUp(self):
         self.count = 0
-        rospy.Subscriver('/lightsensors', LightSensorValues, self.callback)
+        rospy.Subscriber('/lightsensors', LightSensorValues, self.callback)
         self.values = LightSensorValues()
 
     def callback(self, data):
@@ -50,7 +50,7 @@ class LightsensorTest(unittest.TestCase):
         self.assertFalse(self.count == c_prev,"subscriber is stopped")
 
 
-if __neme__ == '__main__':
+if __name__ == '__main__':
     time.sleep(3)
     rospy.init_node('travis_test_lightsensors')
     rostest.rosrun('pimouse_ros','travis_test_lightsensors',LightsensorTest)
