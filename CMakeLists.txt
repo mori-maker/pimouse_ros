@@ -10,8 +10,10 @@ project(pimouse_ros)
 find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
+  std_srvs
   message_generation
-)
+  actionlib_msgs
+  )
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -50,25 +52,27 @@ find_package(catkin REQUIRED COMPONENTS
  add_message_files(
    FILES
    LightSensorValues.msg
+   MotorFreqs.msg
+   )
+
+ ## Generate services in the 'srv' folder
+ add_service_files(
+   FILES
+   TimeMotion.srv
+   #   Service1.srv
+#   Service2.srv
  )
 
-## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
-
 ## Generate actions in the 'action' folder
-# add_action_files(
-#   FILES
-#   Action1.action
-#   Action2.action
-# )
+ add_action_files(
+  FILES
+  Music.action
+ )
 
 ## Generate added messages and services with any dependencies listed here
  generate_messages(
    DEPENDENCIES
+   actionlib_msgs
    std_msgs
  )
 
@@ -104,7 +108,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES pimouse_ros
-  CATKIN_DEPENDS rospy std_msgs message_runtime
+  CATKIN_DEPENDS rospy std_msgs std_srvs message_runtime
 #  DEPENDS system_lib
 )
 
